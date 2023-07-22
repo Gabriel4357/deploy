@@ -5,9 +5,12 @@ const infoRoutes = require("./routes/infoRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const User = require("./models/user");
 const ModReview = require("./models/modReview");
+require("dotenv").config();
 
 // express app
 const app = express();
+const PORT = process.env.PORT || 3001;
+mongoose.set("strictQuery", false);
 
 // Allow requests from your frontend domain
 app.use((req, res, next) => {
@@ -22,7 +25,7 @@ app.use((req, res, next) => {
 
 //connect to mongodb
 const dbURI =
-  "mongodb+srv://plswork:Idk1234@orbital.tnuqfkm.mongodb.net/techbros?retryWrites=true&w=majority";
+  "mongodb+srv://plswork:QG7FAErooggHlbOF@orbital.tnuqfkm.mongodb.net/techbros?retryWrites=true&w=majority";
 mongoose
   .connect(dbURI)
   .then((result) => app.listen(3001))
