@@ -9,6 +9,7 @@ require("dotenv").config();
 
 // express app
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT || 3001;
 mongoose.set("strictQuery", false);
 
@@ -26,10 +27,7 @@ app.use((req, res, next) => {
 //connect to mongodb
 const dbURI =
   "mongodb+srv://plswork:QG7FAErooggHlbOF@orbital.tnuqfkm.mongodb.net/techbros?retryWrites=true&w=majority";
-mongoose
-  .connect(dbURI)
-  .then((result) => app.listen(3001))
-  .catch((err) => console.log(err));
+mongoose.connect(dbURI).catch((err) => console.log(err));
 
 //middleware & static files
 app.use(express.static("public"));
@@ -90,3 +88,7 @@ app.get("/add-review", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/info", infoRoutes);
 app.use("/api/review", reviewRoutes);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
+});
