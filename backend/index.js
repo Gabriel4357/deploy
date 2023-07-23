@@ -6,6 +6,7 @@ const reviewRoutes = require("./routes/reviewRoutes");
 const User = require("./models/user");
 const ModReview = require("./models/modReview");
 require("dotenv").config();
+const cors = require("cors");
 
 // express app
 const app = express();
